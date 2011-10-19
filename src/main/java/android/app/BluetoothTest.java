@@ -6,17 +6,24 @@ import android.bluetooth.BluetoothAdapter;
 
 public class BluetoothTest {
 
-    public static void main(String [] args) {
+    static {
         SimpleAppManager.init();
+    }
+    
+    public static void main(String [] args) {
+        
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         String toast;
         if (adapter.isEnabled()) {
             String address = adapter.getAddress();
             String name = adapter.getName();
-            toast = name + " : " + address;
+            toast = "IcedRobot Bluetooth test#1\n" +
+                    "adapter name: " + name + ", address: " + address;
         } else {
             toast = "fluff not enabled";
         }
         System.err.println(toast);
+        
+        SimpleAppManager.shutdown();
     }
 }
